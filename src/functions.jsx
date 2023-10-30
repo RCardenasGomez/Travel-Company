@@ -6,7 +6,7 @@ export const show_alerta=(msj,icon) =>{
 
 }
 
-export const sendrequest= async(method, params, url,redir='',token=true) =>{
+export const sendrequest= async(method, params, url,redir='', token=true) =>{
     if(token){
         const authToken=storage.get('authToken')
         axios.defaults.headers.common['Authorization']='Bearer ' +authToken
@@ -22,7 +22,7 @@ export const sendrequest= async(method, params, url,redir='',token=true) =>{
         }).catch((errors) => {
             let desc=''
             res=errors.response.data,
-            errors.response.data.errors.map((e) => {desc =desc+''+e})
+            errors.response.data.errors.map((e) => {desc =desc +' '+ e})
             show_alerta(desc, 'error')
         })
         return res
@@ -31,7 +31,7 @@ export const sendrequest= async(method, params, url,redir='',token=true) =>{
 export const confirmation = async(name,url,redir) => {
     const alert= Swal.mixin({buttonsStyling:true})
     alert.fire({
-        title:'¿Are you sure delete?' + name,
+        title:'¿Are you sure delete?'+ ' ' + name,
         icon:'question',showCancelButton:true,
         confirmButtonText:'<i class="fa-solid fa-check"></i> Yes, delete',
         cancelButtonText:'<i class="fa-solid fa-bad"></i> Cancel'

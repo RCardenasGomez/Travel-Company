@@ -25,6 +25,7 @@ export const Nav = () => {
             <li className='nav-item px-lg-5 h4'></li>
             <li className='nav-item px-lg-5'><Link to='/' className='nav-link'>Manage Trip</Link></li>
             <li className='nav-item px-lg-5'><Link to='/supplier' className='nav-link'>Proveedores</Link></li>
+            <li className='nav-item px-lg-5'><Link to='/flight' className='nav-link'>Vuelos</Link></li>
           </ul>
           <ul className='collapse navbar-collapse'>
           <button type="button" className="btn btn-secondary btn-lg" onClick={logout}>Logout</button>

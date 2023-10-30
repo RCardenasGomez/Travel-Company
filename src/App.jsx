@@ -7,6 +7,7 @@ import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { Register } from './Views/Admin/Register';
 import { Home } from './Views/Admin/Home';
 import { Login } from './Views/Admin/Login'; // Asegúrate de importar el componente Login
+import { Flight } from './Views/Admin/Vuelos/IndexFligth';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/create" element={<Createsup />} />
           <Route path="/edit/:id" element={<Editsup />} /> {/* Corregir la ruta aquí */}
+          <Route path="/flight" element={<Flight />} />
         </Routes>
     </BrowserRouter>
   );

@@ -11,13 +11,13 @@ export const Supplier= () => {
     getProveedores()
   })
   const getProveedores = async () =>{
-    const res =await sendrequest('GET','','get/supplier/all','')
+    const res =await sendrequest('GET','','/supplier/get/supplier/all','')
     setProveedores(res)
     setTable('')
     setClassload('d-none')
   }
   const deleteProveedores= (id,name)=>{
-    confirmation(name,('get/supplier/all/'+id,'/'))
+    confirmation(name,('/supplier/delete/supplier/'+id),'')
 
   }
   return (
@@ -43,7 +43,7 @@ export const Supplier= () => {
                   </Link>
                 </td>
                 <td>
-                  <button className='btn btn-danger' onClick={()=> deleteProveedores(row.id,row.name,row.username,row.email)}>
+                  <button className='btn btn-danger' onClick={()=> deleteProveedores(row.id,row.name,row.contact,row.Description)}>
                   <i className='fa-solid fa-trash'>Eliminar</i>
                   </button>
                 </td>

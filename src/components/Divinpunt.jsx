@@ -1,16 +1,16 @@
 import React,{forwardRef,useEffect,useRef} from 'react'
-export default forwardRef( ({type='text',icon='user', placeholder='', name, contact, Description, id, value, className, required, isFocused, handleChange},ref)=> {
-    const input =ref ? ref: useRef()
+export default forwardRef( ({type='text',icon='user', placeholder='', name, contact, description, id, value, className, required, isFocused=false, handleChange},ref)=> {
+    const inputRef =ref || useRef()
     useEffect(() =>{
         if(isFocused){
-            input.current.focus()
+            inputRef.current.focus()
         }
 
     }, [])
   return (
     <div className='input-group mb-3'>
         <span className='input-group-text'>
-            <i className={'fa-solid' + icon }></i>
+            <i className={'fa-solid ' + icon }></i>
         </span>
         <input 
         type={type} 
@@ -18,10 +18,10 @@ export default forwardRef( ({type='text',icon='user', placeholder='', name, cont
         value={value} 
         name={name} 
         contact={contact}
-        description={Description}
+        description={description}
         id={id} 
         className={className} 
-        ref={input} 
+        ref={inputRef} 
         required={required} 
         onChange={(e) => handleChange(e)}
         />

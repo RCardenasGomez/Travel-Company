@@ -5,45 +5,37 @@ export  const Formulario = (params) => {
     const [name, setName] = useState('');
     const [contact, setContact] = useState('');
     const [description, setDescription] = useState('');
-    const [ërror, setError]= useState('')
     let method= 'POST'
-    let url= '/add/supplier'
-    let redirect = ''
+    let url= '/supplier/add/supplier'
+    let redirect = '/supplier'
     useEffect(()=> {
         getSupplier()
-    })
-    const getSupplier= async() =>{
-        if(params.id !== null){
-            const res =await sendrequest('GET', '', (url +'/'+ params.id))
-            setName(res.data.name)
-            setContact(res.data.contact)
-            setDescription(res.data.Description)
+    },)
+    const getSupplier = async () => {
+        if (params.id !== null) {
+          const res = await sendrequest('GET', '', ('/supplier/get/supplier/' + params.id));
+          if (res && res.data) {
+            setName(res.data.name || '');
+            setContact(res.data.contact || '');
+            setDescription(res.data.description || '');
+          }
         }
-    }
+      };
     const save= async(e) =>{
         e.preventDefault()
-        if(validateForm()){
-            if(params.id !== null){
-                method='PUT'
-                url='/add/supplier/' + params.id
-                redirect='/'
-            }
-        const res= await sendrequest(method, {name:name, contact:contact ,Description:description} ,url, redirect)
+        if(params.id !== null){
+            method='PUT'
+            url='/supplier/edit/supplier/' + params.id
+            redirect='/supplier'
+        }
+        const res= await sendrequest(method, {name:name, contact:contact , description:description} ,url, redirect)
         if(method == 'POST' && res.status == true){
             setName('')
             setContact('')
             setDescription('')
+            redirect='/supplier'
 
         }
-      }
-    }
-    const validateForm= () => {
-        if(name.trim() == '' || contact.trim()== '' || description.trim()==''){
-            setError('El nombre es obligatorio')
-            return false
-        }
-        setError('')
-        return true
     }
   return (
     <div className='container-fluid'>
@@ -56,11 +48,11 @@ export  const Formulario = (params) => {
                     <div className='card-body'>
                           <form onSubmit={save}>
                           <Divinpunt type='text' icon='fa-building' 
-                            value={name} className='form-control' placeholder='Name' required='required'  handleChange={(e) =>setName(e.target.value)}   /> 
+                            value={name} className='form-control' placeholder='Name'  handleChange={(e) =>setName(e.target.value)} /> 
                             <Divinpunt type='text' icon='fa-building' 
-                            value={contact} className='form-control' placeholder='Contact' required='required'  handleChange={(e) =>setContact(e.target.value)}  /> 
+                            value={contact} className='form-control' placeholder='Contact' handleChange={(e) =>setContact(e.target.value)} /> 
                             <Divinpunt type='text' icon='fa-building' 
-                            value={description} className='form-control' placeholder='Description' required='required'  handleChange={(e) =>setDescription(e.target.value)}  /> 
+                            value={description} className='form-control' placeholder='Description'  handleChange={(e) =>setDescription(e.target.value)} /> 
                              <div className='d-grid col-10  mx-auto'>
                             <button className='btn btn-dark'>
                                 <i className='fa-solid fa-save'></i>

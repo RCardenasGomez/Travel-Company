@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Index = () => {
+export const Flight = () => {
   return (
     <div>Index</div>
   )
