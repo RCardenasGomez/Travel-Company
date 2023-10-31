@@ -8,6 +8,7 @@ import { Register } from './Views/Admin/Register';
 import { Home } from './Views/Admin/Home';
 import { Login } from './Views/Admin/Login'; // Asegúrate de importar el componente Login
 import { Flight } from './Views/Admin/Vuelos/IndexFligth';
+import { About } from './Views/Admin/About';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/create" element={<Createsup />} />
           <Route path="/edit/:id" element={<Editsup />} /> {/* Corregir la ruta aquí */}

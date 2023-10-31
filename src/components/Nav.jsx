@@ -24,6 +24,7 @@ export const Nav = () => {
           <ul className='navbar-nav mx-auto mb-2'>
             <li className='nav-item px-lg-5 h4'></li>
             <li className='nav-item px-lg-5'><Link to='/' className='nav-link'>Manage Trip</Link></li>
+            <li className='nav-item px-lg-5'><Link to='/about' className='nav-link'>About</Link></li>
             <li className='nav-item px-lg-5'><Link to='/supplier' className='nav-link'>Proveedores</Link></li>
             <li className='nav-item px-lg-5'><Link to='/flight' className='nav-link'>Vuelos</Link></li>
           </ul>
