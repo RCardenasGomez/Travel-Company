@@ -1,7 +1,7 @@
 import React,{useEffect,useState,useRef} from 'react'
 import {sendrequest} from '../functions'
-import Divinpunt from './Divinpunt'
-export  const Formulario = (params) => {
+import DivinpuntSup from './DivinpuntSup';
+export  const FormularioSup = (params) => {
     const [name, setName] = useState('');
     const [contact, setContact] = useState('');
     const [description, setDescription] = useState('');
@@ -47,11 +47,11 @@ export  const Formulario = (params) => {
                     </div>
                     <div className='card-body'>
                           <form onSubmit={save}>
-                          <Divinpunt type='text' icon='fa-building' 
+                          <DivinpuntSup type='text' icon='fa-building' 
                             value={name} className='form-control' placeholder='Name'  handleChange={(e) =>setName(e.target.value)} /> 
-                            <Divinpunt type='text' icon='fa-building' 
+                            <DivinpuntSup type='text' icon='fa-building' 
                             value={contact} className='form-control' placeholder='Contact' handleChange={(e) =>setContact(e.target.value)} /> 
-                            <Divinpunt type='text' icon='fa-building' 
+                            <DivinpuntSup type='text' icon='fa-building' 
                             value={description} className='form-control' placeholder='Description'  handleChange={(e) =>setDescription(e.target.value)} /> 
                              <div className='d-grid col-10  mx-auto'>
                             <button className='btn btn-dark'>
@@ -68,4 +68,4 @@ export  const Formulario = (params) => {
     </div>
   )
 }
-export default Formulario
+export default FormularioSup

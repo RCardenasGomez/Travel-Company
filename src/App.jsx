@@ -7,8 +7,14 @@ import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { Register } from './Views/Admin/Register';
 import { Home } from './Views/Admin/Home';
 import { Login } from './Views/Admin/Login'; // Asegúrate de importar el componente Login
-import { Flight } from './Views/Admin/Vuelos/IndexFligth';
 import { About } from './Views/Admin/About';
+import Vuelos from './Views/Admin/Vuelos/Vuelos';
+import { StandartClass } from './Views/Admin/Vuelos/StandartClass';
+import { FirstClass } from './Views/Admin/Vuelos/FirstClass';
+import { CreateFligth } from './Views/Admin/Vuelos/createFligth';
+import { EditFligth } from './Views/Admin/Vuelos/editFligth';
+import RedVuelos from './Views/Admin/Vuelos/RedVuelos';
+
 
 function App() {
   return (
@@ -22,7 +28,8 @@ function App() {
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/create" element={<Createsup />} />
           <Route path="/edit/:id" element={<Editsup />} /> {/* Corregir la ruta aquí */}
-          <Route path="/flight" element={<Flight />} />
+          <Route path='/flight' element={<Vuelos />}></Route>
+          <Route path='/flight/*'element={<RedVuelos />} />
         </Routes>
     </BrowserRouter>
   );

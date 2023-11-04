@@ -1,8 +1,8 @@
 import React from 'react'
-import Formulario from '../../../components/Formulario'
+import FormularioSup from '../../../components/FormularioSup'
 export const Createsup = () => {
   return (
-    <Formulario id={null} title='Create Supplier'></Formulario>
+    <FormularioSup id={null} title='Create Supplier'></FormularioSup>
   )
 }
 export default Createsup

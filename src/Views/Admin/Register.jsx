@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { sendrequest } from '../../functions'
-import Divinpunt from '../../components/Divinpunt'
+import DivinpuntSup from '../../components/DivinpuntSup'
 export const Register = () => {
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
@@ -19,11 +19,11 @@ export const Register = () => {
 
     <div className="form-outline mb-4">
       <form onSubmit={register}>
-      <Divinpunt type='text' icon='fa-user' value={name} className='form-control' placeholder='Name' required='required'
+      <DivinpuntSup   type='text' icon='fa-user' value={name} className='form-control' placeholder='Name' required='required'
           handleChange={(e) => setName(e.target.value)} />
-        <Divinpunt type='username' icon='fa-at' value={username} className='form-control' placeholder='Username' required='required'
+        <DivinpuntSup type='username' icon='fa-at' value={username} className='form-control' placeholder='Username' required='required'
           handleChange={(e) => setUsername(e.target.value)} />
-        <Divinpunt type='username' icon='fa-at' value={password} className='form-control' placeholder='Password' required='required'
+        <DivinpuntSup type='username' icon='fa-at' value={password} className='form-control' placeholder='Password' required='required'
           handleChange={(e) => setPassword(e.target.value)} />
         <div className="d-flex justify-content-between align-items-center">
           <div className="form-check mb-0">

@@ -1,8 +1,9 @@
 import React from 'react'
+import FormularioVuelo from '../../../components/FormularioVuelo'
 
-export const createFligth = () => {
+export const CreateFligth = () => {
   return (
-    <div>createFligth</div>
+    <FormularioVuelo id={null} title='Create Flight'></FormularioVuelo>
   )
 }
 
