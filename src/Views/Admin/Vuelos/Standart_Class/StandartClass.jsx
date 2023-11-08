@@ -1,9 +1,9 @@
-import React,{useEffect,useState} from 'react'
-import { DivAdd } from '../../../components/DivAdd'
-import { Divtable } from '../../../components/Divtable'
+import React, {useState,useEffect} from 'react'
+import { DivAdd } from '../../../../components/DivAdd'
+import { Divtable } from '../../../../components/Divtable'
 import {Link} from 'react-router-dom'
-import {confirmation, sendrequest} from '../../../functions'
-export const FirstClass = () => {
+import {confirmation, sendrequest} from '../../../../functions'
+export const StandartClass = () => {
   const [vuelos, setVuelos] = useState([])
   const [classLoad, setClassload] = useState('')
   const [classTable, setTable] = useState('')
@@ -11,19 +11,19 @@ export const FirstClass = () => {
     getVuelos()
   }, [])
   const getVuelos = async () =>{
-    const res =await sendrequest('GET','','/flight/get/flights/all/firts_class','')
+    const res =await sendrequest('GET','','/flight/get/flights/all/standart_class','')
     setVuelos(res)
     setTable('')
     setClassload('d-none')
   }
   const deleteVuelos= (id,name)=>{
-    confirmation(name,('/flight/delete/flight/'+ id + '/firts%20class' ),'')
+    confirmation(name,('/flight/delete/flight/'+ id + '/standart%20class' ),'')
 
   }
   return (
     <div className='container-fluid'>
       <DivAdd>
-        <Link to='/flight/createFirst' className='btn btn-dark'>
+        <Link to='/flight/createStandart' className='btn btn-dark'>
           <i className='fa-solid fa-circle-plus '></i>
           Agregar</Link>
       </DivAdd>
@@ -43,7 +43,7 @@ export const FirstClass = () => {
                 <td>{row.id_agency}</td>
                 <td>{row.cost}</td>
                 <td>
-                  <Link to={'/flight/editFirst/'+row.id} className='btn btn-warning'>
+                  <Link to={'/flight/editStandart/'+row.id} className='btn btn-warning'>
                     <i className='fa-solid fa-edit'>Editar</i>
                   </Link>
                 </td>
@@ -64,3 +64,4 @@ export const FirstClass = () => {
     </div>
   )
 }
+export default StandartClass

@@ -11,6 +11,7 @@ export const Supplier = () => {
   const [classTable, setTable] = useState('');
   const [page, setPage] = useState(1);
   const [postsPage, setPostsPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
 
   useEffect(() => {
     getProveedores();
@@ -29,6 +30,11 @@ export const Supplier = () => {
 
   const offset = (page - 1) * postsPage;
 
+  // Función de filtro para buscar proveedores
+  const filteredProveedores = proveedores.filter((row) =>
+    row.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container-fluid">
       <DivAdd>
@@ -36,6 +42,15 @@ export const Supplier = () => {
           <i className="fa-solid fa-circle-plus"></i> Agregar
         </Link>
       </DivAdd>
+      <div className="my-3">
+        <input
+          type="text"
+          placeholder="Buscar proveedor"
+          className="form-control form-control-sm"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <Divtable col="6" off="3" classLoad={classLoad} classTable={classTable}>
         <table className="table table-bordered">
           <thead>
@@ -43,11 +58,11 @@ export const Supplier = () => {
               <th>#</th>
               <th>Proveedores</th>
               <th>Contacto</th>
-              <th>Descripcion</th>
+              <th>Descripción</th>
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {proveedores.slice(offset, offset + postsPage).map((row, i) => (
+            {filteredProveedores.slice(offset, offset + postsPage).map((row, i) => (
               <tr key={row.id}>
                 <td>{offset + i + 1}</td>
                 <td>{row.name}</td>
@@ -70,7 +85,7 @@ export const Supplier = () => {
             ))}
           </tbody>
         </table>
-        <Pagination total={proveedores.length} postsPage={postsPage} setPage={setPage} />
+        <Pagination total={filteredProveedores.length} postsPage={postsPage} setPage={setPage} />
       </Divtable>
     </div>
   );

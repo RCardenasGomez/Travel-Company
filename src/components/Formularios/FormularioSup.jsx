@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useRef} from 'react'
-import {sendrequest} from '../functions'
-import DivinpuntSup from './DivinpuntSup';
+import {sendrequest} from '../../functions'
+import DivinpuntSup from '../Inputs/DivinpuntSup';
 export  const FormularioSup = (params) => {
     const [name, setName] = useState('');
     const [contact, setContact] = useState('');

@@ -1,22 +1,27 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Nav } from '../../../components/Nav';
-import { StandartClass } from './StandartClass';
-import { FirstClass } from './FirstClass';
-import { CreateFligth } from './createFligth';
-import { EditFligth } from './editFligth';
+import StandartClass from './Standart_Class/StandartClass';
+import FirstClass from './First_Class/FirstClass';
+import { CreateFligth } from './First_Class/CreateFligth';
+import { EditFligth } from './First_Class/EditFligth';
+import { CreateFligthS } from './Standart_Class/CreateFligthS';
+import { EditFlightS } from './Standart_Class/EditFlightS';
+import { Reservas } from '../Reservas';
 
 function RedVuelos() {
   return (
     <div>
       <Routes>
         <Route path="standart" element={<StandartClass />} />
-        <Route path="createStandart" element={<CreateFligth />} />
-        <Route path="editStandart/:id" element={<EditFligth />} />
+        <Route path="createStandart" element={<CreateFligthS />} />
+        <Route path="editStandart/:id" element={<EditFlightS />} />
+        <Route path="bookings" element={<Reservas />} ></Route>
 
         <Route path="first" element={<FirstClass />} />
         <Route path="createFirst" element={<CreateFligth />} />
         <Route path="editFirst/:id" element={<EditFligth />} />
+        <Route path="bookings" element={<Reservas />} ></Route>
       </Routes>
     </div>
   );

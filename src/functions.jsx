@@ -8,7 +8,7 @@ export const show_alerta=(msj,icon) =>{
 
 export const sendrequest= async(method, params, url,redir='', token=true) =>{
     if(token){
-        const authToken=storage.get('authToken')
+        const authToken=storage.get('token')
         axios.defaults.headers.common['Authorization']='Bearer ' +authToken
 
     }
@@ -25,7 +25,7 @@ export const sendrequest= async(method, params, url,redir='', token=true) =>{
             errors.response.data.errors.map((e) => {desc =desc +' '+ e})
             show_alerta(desc, 'error')
         })
-        return res
+    return res
 }
 
 export const confirmation = async(name,url,redir) => {

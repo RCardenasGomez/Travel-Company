@@ -1,9 +1,9 @@
-import React, {useState,useEffect} from 'react'
-import { DivAdd } from '../../../components/DivAdd'
-import { Divtable } from '../../../components/Divtable'
+import React,{useEffect,useState} from 'react'
+import { DivAdd } from '../../../../components/DivAdd'
+import { Divtable } from '../../../../components/Divtable'
 import {Link} from 'react-router-dom'
-import {confirmation, sendrequest} from '../../../functions'
-export const StandartClass = () => {
+import {confirmation, sendrequest} from '../../../../functions'
+export const FirstClass = () => {
   const [vuelos, setVuelos] = useState([])
   const [classLoad, setClassload] = useState('')
   const [classTable, setTable] = useState('')
@@ -11,19 +11,19 @@ export const StandartClass = () => {
     getVuelos()
   }, [])
   const getVuelos = async () =>{
-    const res =await sendrequest('GET','','/flight/get/flights/all/standart_class','')
+    const res =await sendrequest('GET','','/flight/get/flights/all/first_class','')
     setVuelos(res)
     setTable('')
     setClassload('d-none')
   }
   const deleteVuelos= (id,name)=>{
-    confirmation(name,('/flight/delete/flight/'+ id + '/standart%20class' ),'')
+    confirmation(name,('/flight/delete/flight/'+ id + '/first_class' ),'')
 
   }
   return (
     <div className='container-fluid'>
       <DivAdd>
-        <Link to='/flight/createStandart' className='btn btn-dark'>
+        <Link to='/flight/createFirst' className='btn btn-dark'>
           <i className='fa-solid fa-circle-plus '></i>
           Agregar</Link>
       </DivAdd>
@@ -43,7 +43,7 @@ export const StandartClass = () => {
                 <td>{row.id_agency}</td>
                 <td>{row.cost}</td>
                 <td>
-                  <Link to={'/flight/editStandart/'+row.id} className='btn btn-warning'>
+                  <Link to={'/flight/editFirst/'+row.id} className='btn btn-warning'>
                     <i className='fa-solid fa-edit'>Editar</i>
                   </Link>
                 </td>
@@ -51,6 +51,11 @@ export const StandartClass = () => {
                   <button className='btn btn-danger' onClick={()=> deleteVuelos(row.id,row.origin,row.destination,row.date,row.positions,row.hour,row.id_agency,row.cost)}>
                   <i className='fa-solid fa-trash'>Eliminar</i>
                   </button>
+                </td>
+                <td>
+                  <Link to={'/flight/bookings'} className='btn btn-primary'>
+                    <i className='fa-solid fa-edit'>Reservar</i>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -64,3 +69,4 @@ export const StandartClass = () => {
     </div>
   )
 }
+export default FirstClass

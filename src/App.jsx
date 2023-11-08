@@ -6,31 +6,34 @@ import { Editsup} from './Views/Admin/Proveedores/editsup';
 import { ProtectedRoutes } from './components/ProtectedRoutes';
 import { Register } from './Views/Admin/Register';
 import { Home } from './Views/Admin/Home';
-import { Login } from './Views/Admin/Login'; // Asegúrate de importar el componente Login
+import Login from './Views/Admin/Login';
 import { About } from './Views/Admin/About';
 import Vuelos from './Views/Admin/Vuelos/Vuelos';
-import { StandartClass } from './Views/Admin/Vuelos/StandartClass';
-import { FirstClass } from './Views/Admin/Vuelos/FirstClass';
-import { CreateFligth } from './Views/Admin/Vuelos/createFligth';
-import { EditFligth } from './Views/Admin/Vuelos/editFligth';
 import RedVuelos from './Views/Admin/Vuelos/RedVuelos';
-
+import { Clientes } from './Views/Admin/Clientes/Clientes';
+import RutasClient from './Views/Admin/Clientes/RutasClient';
+import Offers from './Views/Admin/Ofertas/Offers';
 
 function App() {
   return (
     <BrowserRouter>
       <Nav />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+      <Routes>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/create" element={<Createsup />} />
           <Route path="/edit/:id" element={<Editsup />} /> {/* Corregir la ruta aquí */}
           <Route path='/flight' element={<Vuelos />}></Route>
-          <Route path='/flight/*'element={<RedVuelos />} />
-        </Routes>
+          <Route path='/flight/*' element={<RedVuelos />} />
+          <Route path='/client' element={<Clientes />}></Route>
+          <Route path='/client/*' element={<RutasClient />}></Route>
+          <Route path='/offers' element={<Offers />}></Route>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

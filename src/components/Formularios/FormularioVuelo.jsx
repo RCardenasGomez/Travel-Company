@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useRef} from 'react'
-import {sendrequest} from '../functions'
-import DivinputV from './DivinputV';
+import {sendrequest} from '../../functions'
+import DivinputV from '../Inputs/DivinputV';
 export  const FormularioVuelo = (params) => {
     const [origin, setOrigin] = useState('');
     const [destination, setDestination] = useState('');
@@ -10,7 +10,7 @@ export  const FormularioVuelo = (params) => {
     const [id_agency, setId_agency] = useState('')
     const [premium_cost, setPremium_cost] = useState('')
     let method= 'POST'
-    let url= '/flight/add/firtsclass'
+    let url= '/flight/add/Firstclass'
     let redirect = '/flight/first'
     useEffect(()=> {
         getSupplier()
@@ -33,7 +33,7 @@ export  const FormularioVuelo = (params) => {
         e.preventDefault()
         if(params.id !== null){
             method='PUT'
-            url='/flight/edit/firtsclass/' + params.id
+            url='/flight/edit/Firstclass/' + params.id
             redirect='/flight/first'
         }
         const res= await sendrequest(method, {origin:origin, destination:destination , date:date, positions:positions, hour:hour, id_agency:id_agency, premium_cost:premium_cost} ,url, redirect)
