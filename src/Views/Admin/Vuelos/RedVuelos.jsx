@@ -7,7 +7,7 @@ import { CreateFligth } from './First_Class/CreateFligth';
 import { EditFligth } from './First_Class/EditFligth';
 import { CreateFligthS } from './Standart_Class/CreateFligthS';
 import { EditFlightS } from './Standart_Class/EditFlightS';
-import { Reservas } from '../Reservas';
+import RutasReservas from '../Reservas/RutasReservas';
 
 function RedVuelos() {
   return (
@@ -16,12 +16,12 @@ function RedVuelos() {
         <Route path="standart" element={<StandartClass />} />
         <Route path="createStandart" element={<CreateFligthS />} />
         <Route path="editStandart/:id" element={<EditFlightS />} />
-        <Route path="bookings" element={<Reservas />} ></Route>
+        <Route path="bookings/*" element={<RutasReservas />} ></Route>
 
         <Route path="first" element={<FirstClass />} />
         <Route path="createFirst" element={<CreateFligth />} />
         <Route path="editFirst/:id" element={<EditFligth />} />
-        <Route path="bookings" element={<Reservas />} ></Route>
+        <Route path="bookings/*" element={<RutasReservas />} ></Route>
       </Routes>
     </div>
   );

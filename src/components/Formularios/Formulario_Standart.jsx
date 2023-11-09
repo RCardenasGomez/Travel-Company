@@ -1,6 +1,7 @@
 import React,{useEffect,useState,useRef} from 'react'
 import {sendrequest} from '../../functions'
 import DivinputV from '../Inputs/DivinputV';
+import DivinputS from '../Inputs/DivinputS';
 export  const FormularioStandart = (params) => {
     const [origin, setOrigin] = useState('');
     const [destination, setDestination] = useState('');
@@ -8,7 +9,7 @@ export  const FormularioStandart = (params) => {
     const [positions, setPositions] = useState('')
     const [hour, setHour] = useState('')
     const [id_agency, setId_agency] = useState('')
-    const [premium_cost, setPremium_cost] = useState('')
+    const [standartcost, setStandart_cost] = useState('')
     let method= 'POST'
     let url= '/flight/add/standartclass'
     let redirect = '/flight/standart'
@@ -25,7 +26,7 @@ export  const FormularioStandart = (params) => {
             setPositions(res.data.positions|| '');
             setHour(res.data.hour|| '')
             setId_agency(res.data.id_agency|| '')
-            setPremium_cost(res.data.premium_cost|| '')
+            setPremium_cost(res.data.standart_cost|| '')
           }
         }
       };
@@ -36,7 +37,7 @@ export  const FormularioStandart = (params) => {
             url='/flight/edit/standartclass/' + params.id
             redirect='/flight/standart'
         }
-        const res= await sendrequest(method, {origin:origin, destination:destination , date:date, positions:positions, hour:hour, id_agency:id_agency, premium_cost:premium_cost} ,url, redirect)
+        const res= await sendrequest(method, {origin:origin, destination:destination , date:date, positions:positions, hour:hour, id_agency:id_agency, standart_cost:standartcost} ,url, redirect)
         console.log(res)
         if(method == 'POST' && res.status == true){
             setOrigin('');
@@ -60,20 +61,20 @@ export  const FormularioStandart = (params) => {
                     </div>
                     <div className='card-body'>
                           <form onSubmit={save}>
-                          <DivinputV type='text' icon='fa-building' 
+                          <DivinputS type='text' icon='fa-building' 
                             value={origin} className='form-control' placeholder='Origin'  handleChange={(e) =>setOrigin(e.target.value)} /> 
-                            <DivinputV type='text' icon='fa-building' 
+                            <DivinputS type='text' icon='fa-building' 
                             value={destination} className='form-control' placeholder='Destination' handleChange={(e) =>setDestination(e.target.value)} /> 
-                            <DivinputV type='date' icon='fa-building' 
+                            <DivinputS type='date' icon='fa-building' 
                             value={date} className='form-control' placeholder='Date'  handleChange={(e) =>setDate(e.target.value)} /> 
-                            <DivinputV type='number' icon='fa-building' 
+                            <DivinputS type='number' icon='fa-building' 
                             value={positions} className='form-control' placeholder='Position'  handleChange={(e) =>setPositions(e.target.value)} /> 
-                            <DivinputV type='number' icon='fa-building' 
+                            <DivinputS type='number' icon='fa-building' 
                             value={hour} className='form-control' placeholder='Hour'  handleChange={(e) =>setHour(e.target.value)} /> 
-                            <DivinputV type='number' icon='fa-building' 
+                            <DivinputS type='number' icon='fa-building' 
                             value={id_agency} className='form-control' placeholder='Agency'  handleChange={(e) =>setId_agency(e.target.value)} /> 
-                            <DivinputV type='number' icon='fa-building' 
-                            value={premium_cost} className='form-control' placeholder='Cost'  handleChange={(e) =>setPremium_cost(e.target.value)} /> 
+                            <DivinputS type='number' icon='fa-building' 
+                            value={standartcost} className='form-control' placeholder='Cost'  handleChange={(e) =>setStandart_cost(e.target.value)} /> 
                              <div className='d-grid col-10  mx-auto'>
                             <button className='btn btn-dark'>
                                 <i className='fa-solid fa-save'></i>

@@ -50,10 +50,10 @@ export const Offers = () => {
                         {offers.slice(offset, offset + postsPage).map((row, i) => (
                             <tr key={row.id}>
                                 <td>{offset + i + 1}</td>
-                                <td>{row.discount}</td>
-                                <td>{row.contact}</td>
-                                <td>{row.customer_type}</td>
-                                <td>{row.flight_type}</td>
+                                <td>{row.Id_flight}</td>
+                                <td>{row.Discount}</td>
+                                <td>{row.Customer_type}</td>
+                                <td>{row.Flight_type}</td>
                                 <td>
                                     <Link to={'/edit/' + row.id} className="btn btn-warning">
                                         <i className="fa-solid fa-edit">Editar</i>

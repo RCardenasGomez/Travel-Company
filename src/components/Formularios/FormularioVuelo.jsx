@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useRef} from 'react'
+import React,{useEffect,useState} from 'react'
 import {sendrequest} from '../../functions'
 import DivinputV from '../Inputs/DivinputV';
 export  const FormularioVuelo = (params) => {
@@ -9,45 +9,39 @@ export  const FormularioVuelo = (params) => {
     const [hour, setHour] = useState('')
     const [id_agency, setId_agency] = useState('')
     const [premium_cost, setPremium_cost] = useState('')
+    const [agencies, setAgencies] = useState('')
     let method= 'POST'
     let url= '/flight/add/Firstclass'
     let redirect = '/flight/first'
-    useEffect(()=> {
-        getSupplier()
-    },)
-    const getSupplier = async () => {
-        if (params.id !== null) {
-          const res = await sendrequest('GET', '', ('/flight/get/flights/'+params.id + '/firts_class'));
-          if (res && res.data) {
-            setOrigin(res.data.origin || '');
-            setDestination(res.data.destination || '');
-            setDate(res.data.date || '');
-            setPositions(res.data.positions|| '');
-            setHour(res.data.hour|| '')
-            setId_agency(res.data.id_agency|| '')
-            setPremium_cost(res.data.premium_cost|| '')
+    useEffect(() => {
+      if (params.id !== null) {
+        const fetchDataV = async () => {
+          const res = await sendrequest('GET', '', ('/flight/get/flights/'+ params.id + '/first_class'));
+          if (res) {
+            setOrigin(res.origin || '');
+            setDestination(res.destination || '');
+            setDate(res.date || '');
+            setPositions(res.positions || '')
+            setHour(res.hour || '')
+            setId_agency(res.id_agency || '')
+            setPremium_cost(res.cost || '')
           }
-        }
-      };
+        };
+        fetchDataV();
+      }
+    }, [params.id]);
     const save= async(e) =>{
         e.preventDefault()
         if(params.id !== null){
-            method='PUT'
-            url='/flight/edit/Firstclass/' + params.id
-            redirect='/flight/first'
-        }
-        const res= await sendrequest(method, {origin:origin, destination:destination , date:date, positions:positions, hour:hour, id_agency:id_agency, premium_cost:premium_cost} ,url, redirect)
-        console.log(res)
-        if(method == 'POST' && res.status == true){
-            setOrigin('');
-            setDestination('');
-            setDate('');
-            setPositions('');
-            setHour('')
-            setId_agency('')
-            setPremium_cost('')
-            redirect='/flight/first'
+          const res = await sendrequest('PUT', {origin:origin, destination:destination , date:date, positions:positions, hour:hour, id_agency:id_agency, premium_cost:premium_cost}, '/flight/edit/Firstclass/' + params.id, '/flight/first' )
+          if(res.status === true){
 
+          }
+        }else{
+          const res = await sendrequest('POST',{origin:origin, destination:destination , date:date, positions:positions, hour:hour, id_agency:id_agency, premium_cost:premium_cost},'/flight/add/Firstclass','/flight/first' )
+          if(res.status === true){
+
+          }
         }
     }
   return (

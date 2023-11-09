@@ -1,5 +1,4 @@
 import React from 'react'
-import '../Styles/page.css'
 export const Pagination = ({total, postsPage, setPage}) => {
     let page= []
     for (let i =1 ; i<= Math.ceil(total/postsPage); i++){

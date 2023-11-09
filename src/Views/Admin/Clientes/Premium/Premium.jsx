@@ -14,17 +14,17 @@ export const Premium = () => {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    getClientStandart();
+    getClientPremium();
   }, [page, postsPage]);
 
-  const getClientStandart = async () => {
-    const res = await sendrequest('GET', page, '/clients/get/premiumclient', '');
+  const getClientPremium = async () => {
+    const res = await sendrequest('GET', page, '/clients/get/clients/all/premium_client', '');
     setClient(res);
     setTable('');
     setClassload('d-none');
   };
 
-  const deleteClientStandart = (id, name) => {
+  const deleteClientPremium = (id, name) => {
     confirmation(name, ('/clients/delete/client/' + id +'/premium%20client'), '');
   };
 
@@ -37,7 +37,7 @@ export const Premium = () => {
   return (
     <div className="container-fluid">
       <DivAdd>
-        <Link to="/createClientpremium" className="btn btn-dark">
+        <Link to="/client/createClientpremium" className="btn btn-dark">
           <i className="fa-solid fa-circle-plus"></i> Agregar
         </Link>
       </DivAdd>
@@ -70,14 +70,14 @@ export const Premium = () => {
                  <td>{row.bookings}</td>
                  <td>{row.email}</td>
                  <td>
-                   <Link to={'/edit/' + row.id} className="btn btn-warning">
+                   <Link to={'/client/editClientPremium/' + row.id} className="btn btn-warning">
                      <i className="fa-solid fa-edit">Editar</i>
                    </Link>
                  </td>
                  <td>
                    <button
                      className="btn btn-danger"
-                     onClick={() => deleteClientStandart(row.id, row.name, row.contact, row.Description)}
+                     onClick={() => deleteClientPremium(row.id, row.name, row.contact, row.Description)}
                    >
                      <i className="fa-solid fa-trash">Eliminar</i>
                    </button>

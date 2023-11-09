@@ -1,7 +1,8 @@
 import React from 'react'
+import FormularioClientS from '../../../../components/Formularios/FormularioClientS'
 
 export const CreateCS = () => {
   return (
-    <div>createCS</div>
+    <FormularioClientS id={null} title='Create Client'></FormularioClientS>
   )
 }
