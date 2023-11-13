@@ -1,12 +1,12 @@
 import React from 'react'
 import { FormularioReservas } from '../../../components/Formularios/FormularioReservas'
 import { Routes, Route } from 'react-router-dom'
-import { Bill } from './Bill'
+import Bill from './Bill'
 export const RutasReservas = () => {
   return (
     <div>
         <Routes>
-            <Route path="addBookings" element={<FormularioReservas />}></Route> 
+            <Route path="addBookings/:id/:type_flight" element={<FormularioReservas />}></Route> 
             <Route path="bill" element={<Bill />}></Route>
         </Routes>
     </div>

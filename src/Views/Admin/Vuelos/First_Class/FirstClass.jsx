@@ -1,12 +1,13 @@
 import React,{useEffect,useState} from 'react'
 import { DivAdd } from '../../../../components/DivAdd'
 import { Divtable } from '../../../../components/Divtable'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import {confirmation, sendrequest} from '../../../../functions'
 import Card from '../card'
 import image1 from '../../../../assets/Imagenes/1366_2000.jpeg'
 
 export const FirstClass = () => {
+  const {type_flight}= useParams()
   const [vuelos, setVuelos] = useState([])
   const [classLoad, setClassload] = useState('')
   const [classTable, setTable] = useState('')
@@ -44,7 +45,7 @@ export const FirstClass = () => {
             >
               <i className="fa-solid fa-trash">Eliminar</i>
             </button>
-            <Link to={'/flight/bookings/addBookings'} className='btn btn-primary'>
+            <Link to={'/flight/bookings/addBookings/' + id + '/first%20class'} className='btn btn-primary'>
               <i className='fa-solid fa-edit'>Reservas</i>
             </Link>
           </div>

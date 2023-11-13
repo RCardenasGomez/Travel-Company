@@ -1,5 +1,5 @@
 import React,{forwardRef,useEffect,useRef} from 'react'
-export default forwardRef( ({type='text',icon='user', placeholder='', cant_positions, id_flight, id_client,type_client,type_flight , value, className, required, isFocused=false, handleChange},ref)=> {
+export default forwardRef( ({type='text',icon='user', placeholder='', cant_positions, id_client, id_flight, type_client, type_flight, value, className, required, isFocused=false, handleChange},ref)=> {
     const inputRef =ref || useRef()
     useEffect(() =>{
         if(isFocused){
@@ -17,8 +17,8 @@ export default forwardRef( ({type='text',icon='user', placeholder='', cant_posit
         placeholder={placeholder} 
         value={value} 
         cant_positions={cant_positions}
-        id_flight={id_flight}
         id_client={id_client}
+        id_flight={id_flight}
         type_client={type_client}
         type_flight={type_flight}
         className={className} 
